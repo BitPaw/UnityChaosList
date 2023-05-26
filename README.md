@@ -43,3 +43,15 @@ fixed(char* myStringAdress = myString.ToCharArray())
   // Do stuff
 }		
 ```
+
+## Unity - Hololens 1 is using the Universal Windows Platform (UWP)
+This requires to export as UWP in the build settings in Unity but also has effect on external DLLs.
+<br>
+If you want to use C code in your Hololens 1 project, too bad. As the UWP-System does not compile under strict C-Code rules.<br>
+You NEED to compile as C++, meaning you need to use .cpp extension and have the correct compiler seiitings set up.<br>
+Additionally you are forced into compiling your DLL as expected but as a UWP DLL.<br>
+You need to change some settings to use the C++/CX Windows runtime system.<br>
+**[Microsoft Guide](https://learn.microsoft.com/en-us/cpp/porting/how-to-use-existing-cpp-code-in-a-universal-windows-platform-app?view=msvc-170)**
+This way of setting up did not work for me.<br>
+<p>Annoying but working solution is to just make a new project "DLL C++/CX UWP" and just make a wrapper library.</p>
+
